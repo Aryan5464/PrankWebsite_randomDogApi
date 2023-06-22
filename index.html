@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirror🪞</title>
+    <style>
+        body {
+            background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+        }
+
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            text-align: center;
+            border: 2px solid rgb(160, 160, 160);
+            height: 600px;
+            border-radius: 20px;
+            box-shadow: 5px 2px 5px rgb(160, 160, 160);
+        }
+
+        #dogImage img {
+            margin-top: 100px;
+            border-radius: 10px;
+            box-shadow: 5px 2px 5px rgb(105, 100, 100);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello Human?</h1>
+        <button id="btn">Hit The Button to Turn on the Front Camera.</button>
+        <div id="dogImage"></div>
+    </div>
+
+    <script>
+        const dogImageDiv = document.getElementById('dogImage')
+        const dogBtn = document.getElementById('btn')
+
+        const newDog = () => {
+            fetch('https://dog.ceo/api/breeds/image/random')
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json.message)
+                    dogImageDiv.innerHTML = `<img src ='${json.message}' height = 300 width = 300 alt="DogyyDada">`
+                })
+        }
+        dogBtn.onclick = () => newDog()
+
+    </script>
+</body>
+
+</html>
